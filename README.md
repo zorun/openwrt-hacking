@@ -16,6 +16,8 @@ Mikrotik formats its configuration as TLV data, often directly written to MTD pa
 the basic structure, but some bits are still missing, for instance the
 "Extended Radio Data" (ERD) part is often not correctly interpreted.
 
+Here is an example that shows several configuration data (MAC address, router model...)
+
     $ tools/parse-routerboot.py hap-ac2/mtd3_hard_config.bin
     RB_MAGIC_HARD
     DATA type=26   len=4     data-offset=0x0008  00 00 00 00                          |....|
@@ -44,6 +46,8 @@ the basic structure, but some bits are still missing, for instance the
     DATA type=3840 len=21060 data-offset=0x0008  45 00 01 00 3d 2f fc 20 2f 6f 5f 02  |E...=/. /o_.+
     Done decoding ERD
     Zero-length record with type 0, ending now
+
+Another example:
 
     $ tools/parse-routerboot.py hap-lite/mtd4_soft_config.bin
     Unknown magic: 0x536f6674
