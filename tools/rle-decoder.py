@@ -33,9 +33,8 @@ def rle_decode(buf):
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
-        with open(sys.argv[1], "rb") as f:
-            data = f.read()
-        out = rle_decode(data)
-    else:
-        out = rle_decode(sys.stdin.buffer.read())
+        skip = int(sys.argv[1])
+        print("Skipping {} bytes from input".format(skip), file=sys.stderr)
+        sys.stdin.buffer.read(skip)
+    out = rle_decode(sys.stdin.buffer.read())
     hexdump.hexdump(out)
