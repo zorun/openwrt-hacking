@@ -18,56 +18,56 @@ the basic structure, but some bits are still missing, for instance the
 
     $ tools/parse-routerboot.py hap-ac2/mtd3_hard_config.bin
     RB_MAGIC_HARD
-    DATA type=26    len=4     data-offset=0x0008   00 00 00 00                                                                 |....|
-    DATA type=4     len=8     data-offset=0x0010   74 4d 28 5f d8 75 00 00                                                     |tM(_.u..|
-    DATA type=14    len=4     data-offset=0x001c   07 00 00 00                                                                 |....|
-    DATA type=10    len=4     data-offset=0x0024   e7 43 50 0a                                                                 |.CP.|
-    DATA type=13    len=4     data-offset=0x002c   00 00 00 08                                                                 |....|
-    DATA type=19    len=4     data-offset=0x0034   00 00 00 00                                                                 |....|
-    DATA type=18    len=4     data-offset=0x003c   00 00 02 00                                                                 |....|
-    DATA type=20    len=4     data-offset=0x0044   f4 dc 2e 0d                                                                 |....|
-    DATA type=21    len=4     data-offset=0x004c   00 40 28 08                                                                 |.@(.|
-    DATA type=27    len=4     data-offset=0x0054   88 13 00 00                                                                 |....|
-    DATA type=11    len=16    data-offset=0x005c   42 34 41 30 30 41 35 30 34 33 45 37 00 00 00 00                             |B4A00A5043E7....|
-    DATA type=5     len=24    data-offset=0x0070   52 42 44 35 32 47 2d 35 48 61 63 44 32 48 6e 44 00 00 00 00 00 00 00 00     |RBD52G-5HacD2HnD........|
-    DATA type=33    len=12    data-offset=0x008c   68 41 50 20 61 63 c2 b2 00 00 00 00                                         |hAP ac......|
-    DATA type=6     len=12    data-offset=0x009c   36 2e 34 33 2e 31 30 00 00 00 00 00                                         |6.43.10.....|
-    DATA type=25    len=20    data-offset=0x00ac   ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff                 |....................|
-    DATA type=3     len=20    data-offset=0x00c4   ef 70 18 00 0c 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00                 |.p..................|
-    DATA type=23    len=8     data-offset=0x00dc   68 61 70 2d 64 6b 00 00                                                     |hap-dk..|
-    DATA type=37    len=4     data-offset=0x00e8   0a 66 2b 06                                                                 |.f+.|
-    DATA type=28    len=72    data-offset=0x00f0   a0 02 00 00 02 03 70 02 ac 02 00 00 02 03 39 01 b8 02 00 00 02 03 3a 01 c4  |......p.......9.......:..+
-    DATA type=35    len=8     data-offset=0x013c   cc 02 00 00 00 00 00 00                                                     |........|
-    DATA type=22    len=2964  data-offset=0x0148   4c 5a 4f 52 00 0f 44 52 45 00 01 00 3d 2f fc 20 2f 6f 5f 02 01 fa 74 4d 28  |LZOR..DRE...=/. /o_...tM(+
+    DATA type=26   len=4     data-offset=0x0008  00 00 00 00                          |....|
+    DATA type=4    len=8     data-offset=0x0010  74 4d 28 5f d8 75 00 00              |tM(_.u..|
+    DATA type=14   len=4     data-offset=0x001c  07 00 00 00                          |....|
+    DATA type=10   len=4     data-offset=0x0024  e7 43 50 0a                          |.CP.|
+    DATA type=13   len=4     data-offset=0x002c  00 00 00 08                          |....|
+    DATA type=19   len=4     data-offset=0x0034  00 00 00 00                          |....|
+    DATA type=18   len=4     data-offset=0x003c  00 00 02 00                          |....|
+    DATA type=20   len=4     data-offset=0x0044  f4 dc 2e 0d                          |....|
+    DATA type=21   len=4     data-offset=0x004c  00 40 28 08                          |.@(.|
+    DATA type=27   len=4     data-offset=0x0054  88 13 00 00                          |....|
+    DATA type=11   len=16    data-offset=0x005c  42 34 41 30 30 41 35 30 34 33 45 37  |B4A00A5043E7+
+    DATA type=5    len=24    data-offset=0x0070  52 42 44 35 32 47 2d 35 48 61 63 44  |RBD52G-5HacD+
+    DATA type=33   len=12    data-offset=0x008c  68 41 50 20 61 63 c2 b2 00 00 00 00  |hAP ac......|
+    DATA type=6    len=12    data-offset=0x009c  36 2e 34 33 2e 31 30 00 00 00 00 00  |6.43.10.....|
+    DATA type=25   len=20    data-offset=0x00ac  ff ff ff ff ff ff ff ff ff ff ff ff  |............+
+    DATA type=3    len=20    data-offset=0x00c4  ef 70 18 00 0c 00 00 00 00 10 00 00  |.p..........+
+    DATA type=23   len=8     data-offset=0x00dc  68 61 70 2d 64 6b 00 00              |hap-dk..|
+    DATA type=37   len=4     data-offset=0x00e8  0a 66 2b 06                          |.f+.|
+    DATA type=28   len=72    data-offset=0x00f0  a0 02 00 00 02 03 70 02 ac 02 00 00  |......p.....+
+    DATA type=35   len=8     data-offset=0x013c  cc 02 00 00 00 00 00 00              |........|
+    DATA type=22   len=2964  data-offset=0x0148  4c 5a 4f 52 00 0f 44 52 45 00 01 00  |LZOR..DRE...+
     Trying to recursively decode ERD partition
     RB_MAGIC_LZOR
-    DATA type=3840  len=21060 data-offset=0x0008   45 00 01 00 3d 2f fc 20 2f 6f 5f 02 01 fa 74 4d 28 5f d8 7a 02 00 fc 20 00  |E...=/. /o_...tM(_.z... .+
+    DATA type=3840 len=21060 data-offset=0x0008  45 00 01 00 3d 2f fc 20 2f 6f 5f 02  |E...=/. /o_.+
     Done decoding ERD
     Zero-length record with type 0, ending now
 
-    $ tools/parse-routerboot.py hap-lite/mtd4_soft_config.bin 
+    $ tools/parse-routerboot.py hap-lite/mtd4_soft_config.bin
     Unknown magic: 0x536f6674
     Trying again in big-endian mode
     RB_MAGIC_SOFT
     CRC: 0x1d10490d
-    DATA type=12    len=4     data-offset=0x000c   00 00 00 10                                                                 |....|
-    DATA type=17    len=4     data-offset=0x0014   00 00 00 00                                                                 |....|
-    DATA type=10    len=4     data-offset=0x001c   00 00 00 02                                                                 |....|
-    DATA type=1     len=4     data-offset=0x0024   00 00 00 00                                                                 |....|
-    DATA type=2     len=4     data-offset=0x002c   00 00 00 02                                                                 |....|
-    DATA type=3     len=4     data-offset=0x0034   00 00 00 01                                                                 |....|
-    DATA type=4     len=4     data-offset=0x003c   00 00 00 00                                                                 |....|
-    DATA type=5     len=4     data-offset=0x0044   00 00 00 00                                                                 |....|
-    DATA type=7     len=4     data-offset=0x004c   00 00 00 00                                                                 |....|
-    DATA type=9     len=4     data-offset=0x0054   00 00 00 00                                                                 |....|
-    DATA type=15    len=4     data-offset=0x005c   00 00 00 00                                                                 |....|
-    DATA type=21    len=4     data-offset=0x0064   00 00 00 00                                                                 |....|
-    DATA type=23    len=4     data-offset=0x006c   00 00 00 00                                                                 |....|
-    DATA type=27    len=4     data-offset=0x0074   00 00 00 00                                                                 |....|
-    DATA type=31    len=4     data-offset=0x007c   00 14 02 58                                                                 |...X|
-    DATA type=13    len=4     data-offset=0x0084   00 00 00 00                                                                 |....|
-    DATA type=6     len=8     data-offset=0x008c   33 2e 34 31 00 00 00 00                                                     |3.41....|
-    DATA type=11    len=8     data-offset=0x0098   00 00 00 00 00 00 06 23                                                     |.......#|
+    DATA type=12  len=4  data-offset=0x000c  00 00 00 10                |....|
+    DATA type=17  len=4  data-offset=0x0014  00 00 00 00                |....|
+    DATA type=10  len=4  data-offset=0x001c  00 00 00 02                |....|
+    DATA type=1   len=4  data-offset=0x0024  00 00 00 00                |....|
+    DATA type=2   len=4  data-offset=0x002c  00 00 00 02                |....|
+    DATA type=3   len=4  data-offset=0x0034  00 00 00 01                |....|
+    DATA type=4   len=4  data-offset=0x003c  00 00 00 00                |....|
+    DATA type=5   len=4  data-offset=0x0044  00 00 00 00                |....|
+    DATA type=7   len=4  data-offset=0x004c  00 00 00 00                |....|
+    DATA type=9   len=4  data-offset=0x0054  00 00 00 00                |....|
+    DATA type=15  len=4  data-offset=0x005c  00 00 00 00                |....|
+    DATA type=21  len=4  data-offset=0x0064  00 00 00 00                |....|
+    DATA type=23  len=4  data-offset=0x006c  00 00 00 00                |....|
+    DATA type=27  len=4  data-offset=0x0074  00 00 00 00                |....|
+    DATA type=31  len=4  data-offset=0x007c  00 14 02 58                |...X|
+    DATA type=13  len=4  data-offset=0x0084  00 00 00 00                |....|
+    DATA type=6   len=8  data-offset=0x008c  33 2e 34 31 00 00 00 00    |3.41....|
+    DATA type=11  len=8  data-offset=0x0098  00 00 00 00 00 00 06 23    |.......#|
     Zero-length record with type 0, ending now
 
 ### LZO decompressor
