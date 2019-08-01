@@ -56,4 +56,5 @@ int main(int argc, char *argv[])
     ret = lzo1x_decompress_safe(inbuf, inlen, outbuf, &outlen, NULL);
     fprintf(stderr, "LZO return code is %d. Writing %lu bytes to stdout.\n", ret, outlen);
     write(STDOUT_FILENO, outbuf, outlen);
+    return ret;
 }
