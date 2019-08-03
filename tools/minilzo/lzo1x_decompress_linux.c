@@ -55,6 +55,7 @@
 #define MAX_255_COUNT      ((((size_t)~0) / 255) - 2)
 
 
+/* NOTE: only works on a little-endian CPU! (x86 is fine) */
 inline uint16_t get_unaligned_le16(const unsigned char* p)
 {
     uint16_t tmp = 0;
