@@ -10,6 +10,7 @@
 #endif
 #include <limits.h>
 #include <stddef.h>
+#include <stdint.h>
 
 #undef LZO_HAVE_CONFIG_H
 #include "minilzo.h"
@@ -18,10 +19,6 @@
 #include <lzo/lzoconf.h>
 #include <string.h>
 #include <stdio.h>
-
-#include <linux/byteorder/little_endian.h>
-
-#define get_unaligned_le16(x)  __le16_to_cpup(x)
 
 #define M2_MAX_OFFSET   0x0800
 
@@ -57,6 +54,16 @@
  */
 #define MAX_255_COUNT      ((((size_t)~0) / 255) - 2)
 
+
+inline uint16_t get_unaligned_le16(const unsigned char* p)
+{
+    uint16_t tmp = 0;
+    tmp = p[0];
+    tmp |= p[1] << 8;
+    return tmp;
+}
+
+
 int
 lzo1x_decompress_safe_linux  ( const lzo_bytep in , lzo_uint  in_len,
                        lzo_bytep out, lzo_uintp out_len,
@@ -78,6 +85,7 @@ lzo1x_decompress_safe_linux  ( const lzo_bytep in , lzo_uint  in_len,
 	if (in_len < 3)
 		goto input_overrun;
 
+        /* We always for version 1 (LZO-RLE) here */
         bitstream_version = 1;
 
 	if (*ip > 17) {
