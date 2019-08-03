@@ -117,8 +117,25 @@ something like:
 The decompressor exits with the return code from the LZO routine, allowing to check
 if decompression was successful.
 
-TODO: check that the kernel LZO implementation (`lib/lzo/lzo1x_decompress_safe.c`)
-actually produces the same output...
+### LZO-RLE decompressor from Linux
+
+The linux kernel recently gained a new variant of LZO, called "LZO-RLE".  It basically
+encodes runs of zeroes in a more efficient way, the purpose of which is much faster
+decompression.
+
+`tools/minilzo/decompressor-linux` implements this variant, with the same usage as
+`tools/minilzo/decompressor`.
+
+Note that, contrary to the kernel implementation, it does not look for a specific header
+(`0x11 0x01` in the kernel implementation) and just blindly tries to decode the input data
+as LZO-RLE.  Just skip two bytes of input if you do have a header in your data.
+
+More information on the LZO-RLE format:
+
+- <https://www.kernel.org/doc/Documentation/lzo.txt>
+- <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5ee4014af99f77dac89e01961b717d13ff1a8ea5> (part of Linux 5.0)
+- <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=45ec975efb527625629d123f30597673889f52ca> (part of Linux 5.0)
+- <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b11ed18efa8f3dc58b259b812588317b765b1cfc> (bug fix, part of Linux 5.1)
 
 ### Run-Length Encoding
 
