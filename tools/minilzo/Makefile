@@ -5,7 +5,7 @@
 #
 
 PROGRAM = decompressor
-SOURCES = decompressor.c minilzo.c
+SOURCES = decompressor.c minilzo.c lzo1x_decompress_linux.c
 
 default:
 	@echo ""
@@ -32,6 +32,7 @@ GCC_CFLAGS = -s -Wall -O2 -fomit-frame-pointer
 
 gcc:
 	gcc $(CPPFLAGS) $(GCC_CFLAGS) -o $(PROGRAM) $(SOURCES)
+	ln -sf $(PROGRAM) $(PROGRAM)-linux
 
 cc:
 	cc $(CPPFLAGS) -o $(PROGRAM) $(SOURCES)

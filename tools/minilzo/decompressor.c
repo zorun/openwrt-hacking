@@ -20,6 +20,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include <unistd.h>
 #include "minilzo.h"
 
@@ -52,8 +53,16 @@ int main(int argc, char *argv[])
     }
     fprintf(stderr, "Read %lu bytes from stdin.\n", inlen);
 
-    /* Decompress and output */
-    ret = lzo1x_decompress_safe(inbuf, inlen, outbuf, &outlen, NULL);
+    /* Decompress: choose implementation based on the (end of the) name of
+     * the executable. */
+    if (strcmp(argv[0] + strlen(argv[0]) - 18, "decompressor-linux") == 0) {
+        fprintf(stderr, "Using the Linux LZO-RLE implementation.\n");
+        ret = lzo1x_decompress_safe_linux(inbuf, inlen, outbuf, &outlen, NULL);
+    } else {
+        fprintf(stderr, "Using the regular minilzo implementation.\n");
+        ret = lzo1x_decompress_safe(inbuf, inlen, outbuf, &outlen, NULL);
+    }
+    /* Output */
     fprintf(stderr, "LZO return code is %d. Writing %lu bytes to stdout.\n", ret, outlen);
     write(STDOUT_FILENO, outbuf, outlen);
     return ret;
