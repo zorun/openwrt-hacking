@@ -3,9 +3,9 @@
 # Author: ius
 # https://gist.github.com/ius/7c1c0f8012ae6b5f8e5197fd671ab546
 
-import sys
 import struct
 import ctypes
+import sys
 
 LZO_PREFIX = bytes([
     0x00, 0x05, 0x4c, 0x4c, 0x44, 0x00, 0x34, 0xfe,
@@ -193,6 +193,24 @@ def read_tlvs(fp):
         v = fp.read(l)
         yield t, v
 
+def radio_data_rle_decompress(data):
+    out = b''
+
+    i = 0
+    while i < len(data)-1:
+        x = data[i]
+        i += 1
+
+        if x & 0x80:
+            n = -x & 0xff
+            out += data[i:i+n]
+            i += n
+        else:
+            out += bytes([data[i]]) * x
+            i += 1
+
+    return out
+
 fp = open(sys.argv[1], 'rb')
 assert fp.read(4) == b'Hard'
 
@@ -207,5 +225,21 @@ dst_len = ctypes.c_uint(len(dst))
 lzo = ctypes.CDLL('liblzo2.so')
 lzo.lzo1x_decompress_safe(src, len(src), dst, ctypes.byref(dst_len), 0)
 
-print(dst_len)
-open('radio.bin', 'wb').write(dst[:dst_len.value])
+data = dst[:dst_len.value]
+#open('radio_decompressed.bin', 'wb').write(data)
+
+offset = data.find(b'DRE\x00')
+chunk_start = offset + 4
+
+chunk_id, chunk_size = struct.unpack('<HH', data[chunk_start:chunk_start+4])
+chunk_size += (4 - chunk_size % 4) % 4
+
+print('ERD chunk_id={:#x} size={:#x}'.format(chunk_id, chunk_size))
+
+if len(data[chunk_start+4:]) != chunk_size + 4:
+    print('WARNING: unexpected ERD size (multiple chunks?)')
+
+data = data[chunk_start+4:chunk_start+4+chunk_size]
+data = radio_data_rle_decompress(data[:-1])
+
+open('erd.bin', 'wb').write(data)
